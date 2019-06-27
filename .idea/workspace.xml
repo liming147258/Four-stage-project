@@ -2,10 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee13878a-18b1-4c02-8540-989440a393d6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServiceImpl/ServiceImpl.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceImpl/ServiceImpl.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/CodeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/CodetypeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/CourierDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/OwnerDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/RoleDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/SourceDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/TextDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/UserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/Yjpt pnApplyPartnerDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/Yjpt psPropertiesImgDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/YjptDiWorksrelationshipDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/YjptPdLogisticsmatchingDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/YjptPdProdetailDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/YjptPdProductDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/YjptPdPropertiesDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/YjptPdProtypeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/YjptPdSkuDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/YjptPdTextureDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/YjptPsBuildingDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/YjptPsPropertiesSaleDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/YjptPsRoomsDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/src/main/java/com/qp/dao/YjptPsSalesorderDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServiceImpl/src/main/java/com/qp/serviceimpl/TextServcieImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceImpl/src/main/java/com/qp/serviceimpl/TextServcieImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/Service/target/" />
@@ -61,7 +80,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Controller/src/main/webapp/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
+            <state relative-caret-position="-390">
               <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
             </state>
           </provider>
@@ -141,26 +160,36 @@
             <path>
               <item name="four" type="b2602c69:ProjectViewProjectNode" />
               <item name="four" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+              <item name="Dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="four" type="b2602c69:ProjectViewProjectNode" />
+              <item name="four" type="462c0819:PsiDirectoryNode" />
+              <item name="Dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="four" type="b2602c69:ProjectViewProjectNode" />
+              <item name="four" type="462c0819:PsiDirectoryNode" />
+              <item name="Dao" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="four" type="b2602c69:ProjectViewProjectNode" />
               <item name="four" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+              <item name="Dao" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="four" type="b2602c69:ProjectViewProjectNode" />
               <item name="four" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+              <item name="Dao" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="four" type="b2602c69:ProjectViewProjectNode" />
@@ -187,15 +216,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="four" type="b2602c69:ProjectViewProjectNode" />
-              <item name="four" type="462c0819:PsiDirectoryNode" />
-              <item name="Pojo" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pojo" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -242,7 +262,7 @@
       <workItem from="1561599603391" duration="10000" />
       <workItem from="1561599657334" duration="34000" />
       <workItem from="1561599925391" duration="540000" />
-      <workItem from="1561600528068" duration="5500000" />
+      <workItem from="1561600528068" duration="6703000" />
     </task>
     <task id="LOCAL-00001" summary="啦啦啦">
       <created>1561534377561</created>
@@ -258,11 +278,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561540079595</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="删除mybatis文件">
+      <created>1561620791336</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1561620791336</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12512000" />
+    <option name="totallyTimeSpent" value="13715000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -271,7 +298,7 @@
       <window_info id="Learn" order="1" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Web" order="3" sideWeight="0.5042373" side_tool="true" weight="0.24962178" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.49682876" visible="true" weight="0.2246596" />
+      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.49682876" visible="true" weight="0.2246596" />
       <window_info id="Structure" order="5" side_tool="true" weight="0.24962178" />
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.32935154" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32935154" />
@@ -288,7 +315,7 @@
       <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="14" />
-      <window_info anchor="right" id="Database" order="0" weight="0.25189108" />
+      <window_info active="true" anchor="right" id="Database" order="0" visible="true" weight="0.25189108" />
       <window_info anchor="right" id="ASM" order="1" />
       <window_info anchor="right" id="Palette&#9;" order="2" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="3" type="SLIDING" weight="0.4" />
@@ -333,7 +360,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="啦啦啦" />
     <MESSAGE value="配置了静态资源解析" />
-    <option name="LAST_COMMIT_MESSAGE" value="配置了静态资源解析" />
+    <MESSAGE value="删除mybatis文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="删除mybatis文件" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -434,7 +462,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Controller/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
+        <state relative-caret-position="-390">
           <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
         </state>
       </provider>
