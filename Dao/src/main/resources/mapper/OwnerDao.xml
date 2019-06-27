@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qp.dao.OwnerDao">
+  <resultMap id="BaseResultMap" type="com.qp.pojo.Owner">
+    <id column="OWNERID" jdbcType="INTEGER" property="ownerid" />
+    <result column="OWNERNAME" jdbcType="CHAR" property="ownername" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    <result column="IDNUMBER" jdbcType="CHAR" property="idnumber" />
+    <result column="SEX" jdbcType="VARCHAR" property="sex" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="PROVINCE" jdbcType="VARCHAR" property="province" />
+    <result column="CITY" jdbcType="VARCHAR" property="city" />
+    <result column="AREA" jdbcType="VARCHAR" property="area" />
+    <result column="DETAILEDADDRESS" jdbcType="VARCHAR" property="detailedaddress" />
+    <result column="STATS" jdbcType="CHAR" property="stats" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    OWNERID, OWNERNAME, PHONE, IDNUMBER, SEX, EMAIL, PROVINCE, CITY, AREA, DETAILEDADDRESS, 
+    STATS
+  </sql>
+  <select id="selectByExample" parameterType="com.qp.pojo.OwnerExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from owner
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from owner
+    where OWNERID = #{ownerid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from owner
+    where OWNERID = #{ownerid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qp.pojo.OwnerExample">
+    delete from owner
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="OWNERID" keyProperty="ownerid" parameterType="com.qp.pojo.Owner" useGeneratedKeys="true">
+    insert into owner (OWNERNAME, PHONE, IDNUMBER, 
+      SEX, EMAIL, PROVINCE, 
+      CITY, AREA, DETAILEDADDRESS, 
+      STATS)
+    values (#{ownername,jdbcType=CHAR}, #{phone,jdbcType=VARCHAR}, #{idnumber,jdbcType=CHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{detailedaddress,jdbcType=VARCHAR}, 
+      #{stats,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="OWNERID" keyProperty="ownerid" parameterType="com.qp.pojo.Owner" useGeneratedKeys="true">
+    insert into owner
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ownername != null">
+        OWNERNAME,
+      </if>
+      <if test="phone != null">
+        PHONE,
+      </if>
+      <if test="idnumber != null">
+        IDNUMBER,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="province != null">
+        PROVINCE,
+      </if>
+      <if test="city != null">
+        CITY,
+      </if>
+      <if test="area != null">
+        AREA,
+      </if>
+      <if test="detailedaddress != null">
+        DETAILEDADDRESS,
+      </if>
+      <if test="stats != null">
+        STATS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ownername != null">
+        #{ownername,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="idnumber != null">
+        #{idnumber,jdbcType=CHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedaddress != null">
+        #{detailedaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="stats != null">
+        #{stats,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qp.pojo.OwnerExample" resultType="java.lang.Long">
+    select count(*) from owner
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update owner
+    <set>
+      <if test="record.ownerid != null">
+        OWNERID = #{record.ownerid,jdbcType=INTEGER},
+      </if>
+      <if test="record.ownername != null">
+        OWNERNAME = #{record.ownername,jdbcType=CHAR},
+      </if>
+      <if test="record.phone != null">
+        PHONE = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idnumber != null">
+        IDNUMBER = #{record.idnumber,jdbcType=CHAR},
+      </if>
+      <if test="record.sex != null">
+        SEX = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.province != null">
+        PROVINCE = #{record.province,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null">
+        CITY = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.area != null">
+        AREA = #{record.area,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detailedaddress != null">
+        DETAILEDADDRESS = #{record.detailedaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stats != null">
+        STATS = #{record.stats,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update owner
+    set OWNERID = #{record.ownerid,jdbcType=INTEGER},
+      OWNERNAME = #{record.ownername,jdbcType=CHAR},
+      PHONE = #{record.phone,jdbcType=VARCHAR},
+      IDNUMBER = #{record.idnumber,jdbcType=CHAR},
+      SEX = #{record.sex,jdbcType=VARCHAR},
+      EMAIL = #{record.email,jdbcType=VARCHAR},
+      PROVINCE = #{record.province,jdbcType=VARCHAR},
+      CITY = #{record.city,jdbcType=VARCHAR},
+      AREA = #{record.area,jdbcType=VARCHAR},
+      DETAILEDADDRESS = #{record.detailedaddress,jdbcType=VARCHAR},
+      STATS = #{record.stats,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qp.pojo.Owner">
+    update owner
+    <set>
+      <if test="ownername != null">
+        OWNERNAME = #{ownername,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="idnumber != null">
+        IDNUMBER = #{idnumber,jdbcType=CHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        AREA = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedaddress != null">
+        DETAILEDADDRESS = #{detailedaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="stats != null">
+        STATS = #{stats,jdbcType=CHAR},
+      </if>
+    </set>
+    where OWNERID = #{ownerid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qp.pojo.Owner">
+    update owner
+    set OWNERNAME = #{ownername,jdbcType=CHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      IDNUMBER = #{idnumber,jdbcType=CHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      AREA = #{area,jdbcType=VARCHAR},
+      DETAILEDADDRESS = #{detailedaddress,jdbcType=VARCHAR},
+      STATS = #{stats,jdbcType=CHAR}
+    where OWNERID = #{ownerid,jdbcType=INTEGER}
+  </update>
+</mapper>

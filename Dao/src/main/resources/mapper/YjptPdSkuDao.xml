@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qp.dao.YjptPdSkuDao">
+  <resultMap id="BaseResultMap" type="com.qp.pojo.YjptPdSku">
+    <id column="SUKID" jdbcType="INTEGER" property="sukid" />
+    <result column="PVIDS" jdbcType="VARCHAR" property="pvids" />
+    <result column="PDID" jdbcType="INTEGER" property="pdid" />
+    <result column="AMOUNT" jdbcType="DECIMAL" property="amount" />
+    <result column="NUM" jdbcType="INTEGER" property="num" />
+    <result column="ISENABLE" jdbcType="CHAR" property="isenable" />
+    <result column="CREATETOR" jdbcType="CHAR" property="createtor" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="MODIFIER" jdbcType="CHAR" property="modifier" />
+    <result column="MODIFYTIME" jdbcType="TIMESTAMP" property="modifytime" />
+    <result column="WEIGHT" jdbcType="DECIMAL" property="weight" />
+    <result column="VOLUME" jdbcType="DECIMAL" property="volume" />
+    <result column="PACKVOLUME" jdbcType="DECIMAL" property="packvolume" />
+    <result column="DISAMOUNT" jdbcType="DECIMAL" property="disamount" />
+    <result column="LONGS" jdbcType="DECIMAL" property="longs" />
+    <result column="WIDE" jdbcType="DECIMAL" property="wide" />
+    <result column="HEIGHT" jdbcType="DECIMAL" property="height" />
+    <result column="PACKNUM" jdbcType="INTEGER" property="packnum" />
+    <result column="PROJECTAMOUT" jdbcType="DECIMAL" property="projectamout" />
+    <result column="MSAMOUNT" jdbcType="DECIMAL" property="msamount" />
+    <result column="PACKWEIGHT" jdbcType="DECIMAL" property="packweight" />
+    <result column="STYLEID" jdbcType="INTEGER" property="styleid" />
+    <result column="MODEL" jdbcType="VARCHAR" property="model" />
+    <result column="PRODUCTMEG" jdbcType="VARCHAR" property="productmeg" />
+    <result column="PRODUCTJMEG" jdbcType="VARCHAR" property="productjmeg" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="PDSTYLENAME" jdbcType="VARCHAR" property="pdstylename" />
+    <result column="LISTDATE" jdbcType="DATE" property="listdate" />
+    <result column="BEGINDATE" jdbcType="DATE" property="begindate" />
+    <result column="ENDDATE" jdbcType="DATE" property="enddate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    SUKID, PVIDS, PDID, AMOUNT, NUM, ISENABLE, CREATETOR, CREATETIME, MODIFIER, MODIFYTIME, 
+    WEIGHT, VOLUME, PACKVOLUME, DISAMOUNT, LONGS, WIDE, HEIGHT, PACKNUM, PROJECTAMOUT, 
+    MSAMOUNT, PACKWEIGHT, STYLEID, MODEL, PRODUCTMEG, PRODUCTJMEG, REMARK, PDSTYLENAME, 
+    LISTDATE, BEGINDATE, ENDDATE
+  </sql>
+  <select id="selectByExample" parameterType="com.qp.pojo.YjptPdSkuExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from yjpt_pd_sku
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yjpt_pd_sku
+    where SUKID = #{sukid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yjpt_pd_sku
+    where SUKID = #{sukid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qp.pojo.YjptPdSkuExample">
+    delete from yjpt_pd_sku
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="SUKID" keyProperty="sukid" parameterType="com.qp.pojo.YjptPdSku" useGeneratedKeys="true">
+    insert into yjpt_pd_sku (PVIDS, PDID, AMOUNT, 
+      NUM, ISENABLE, CREATETOR, 
+      CREATETIME, MODIFIER, MODIFYTIME, 
+      WEIGHT, VOLUME, PACKVOLUME, 
+      DISAMOUNT, LONGS, WIDE, 
+      HEIGHT, PACKNUM, PROJECTAMOUT, 
+      MSAMOUNT, PACKWEIGHT, STYLEID, 
+      MODEL, PRODUCTMEG, PRODUCTJMEG, 
+      REMARK, PDSTYLENAME, LISTDATE, 
+      BEGINDATE, ENDDATE)
+    values (#{pvids,jdbcType=VARCHAR}, #{pdid,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL}, 
+      #{num,jdbcType=INTEGER}, #{isenable,jdbcType=CHAR}, #{createtor,jdbcType=CHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=CHAR}, #{modifytime,jdbcType=TIMESTAMP}, 
+      #{weight,jdbcType=DECIMAL}, #{volume,jdbcType=DECIMAL}, #{packvolume,jdbcType=DECIMAL}, 
+      #{disamount,jdbcType=DECIMAL}, #{longs,jdbcType=DECIMAL}, #{wide,jdbcType=DECIMAL}, 
+      #{height,jdbcType=DECIMAL}, #{packnum,jdbcType=INTEGER}, #{projectamout,jdbcType=DECIMAL}, 
+      #{msamount,jdbcType=DECIMAL}, #{packweight,jdbcType=DECIMAL}, #{styleid,jdbcType=INTEGER}, 
+      #{model,jdbcType=VARCHAR}, #{productmeg,jdbcType=VARCHAR}, #{productjmeg,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{pdstylename,jdbcType=VARCHAR}, #{listdate,jdbcType=DATE}, 
+      #{begindate,jdbcType=DATE}, #{enddate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" keyColumn="SUKID" keyProperty="sukid" parameterType="com.qp.pojo.YjptPdSku" useGeneratedKeys="true">
+    insert into yjpt_pd_sku
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pvids != null">
+        PVIDS,
+      </if>
+      <if test="pdid != null">
+        PDID,
+      </if>
+      <if test="amount != null">
+        AMOUNT,
+      </if>
+      <if test="num != null">
+        NUM,
+      </if>
+      <if test="isenable != null">
+        ISENABLE,
+      </if>
+      <if test="createtor != null">
+        CREATETOR,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="modifier != null">
+        MODIFIER,
+      </if>
+      <if test="modifytime != null">
+        MODIFYTIME,
+      </if>
+      <if test="weight != null">
+        WEIGHT,
+      </if>
+      <if test="volume != null">
+        VOLUME,
+      </if>
+      <if test="packvolume != null">
+        PACKVOLUME,
+      </if>
+      <if test="disamount != null">
+        DISAMOUNT,
+      </if>
+      <if test="longs != null">
+        LONGS,
+      </if>
+      <if test="wide != null">
+        WIDE,
+      </if>
+      <if test="height != null">
+        HEIGHT,
+      </if>
+      <if test="packnum != null">
+        PACKNUM,
+      </if>
+      <if test="projectamout != null">
+        PROJECTAMOUT,
+      </if>
+      <if test="msamount != null">
+        MSAMOUNT,
+      </if>
+      <if test="packweight != null">
+        PACKWEIGHT,
+      </if>
+      <if test="styleid != null">
+        STYLEID,
+      </if>
+      <if test="model != null">
+        MODEL,
+      </if>
+      <if test="productmeg != null">
+        PRODUCTMEG,
+      </if>
+      <if test="productjmeg != null">
+        PRODUCTJMEG,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="pdstylename != null">
+        PDSTYLENAME,
+      </if>
+      <if test="listdate != null">
+        LISTDATE,
+      </if>
+      <if test="begindate != null">
+        BEGINDATE,
+      </if>
+      <if test="enddate != null">
+        ENDDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pvids != null">
+        #{pvids,jdbcType=VARCHAR},
+      </if>
+      <if test="pdid != null">
+        #{pdid,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="isenable != null">
+        #{isenable,jdbcType=CHAR},
+      </if>
+      <if test="createtor != null">
+        #{createtor,jdbcType=CHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=CHAR},
+      </if>
+      <if test="modifytime != null">
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="volume != null">
+        #{volume,jdbcType=DECIMAL},
+      </if>
+      <if test="packvolume != null">
+        #{packvolume,jdbcType=DECIMAL},
+      </if>
+      <if test="disamount != null">
+        #{disamount,jdbcType=DECIMAL},
+      </if>
+      <if test="longs != null">
+        #{longs,jdbcType=DECIMAL},
+      </if>
+      <if test="wide != null">
+        #{wide,jdbcType=DECIMAL},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=DECIMAL},
+      </if>
+      <if test="packnum != null">
+        #{packnum,jdbcType=INTEGER},
+      </if>
+      <if test="projectamout != null">
+        #{projectamout,jdbcType=DECIMAL},
+      </if>
+      <if test="msamount != null">
+        #{msamount,jdbcType=DECIMAL},
+      </if>
+      <if test="packweight != null">
+        #{packweight,jdbcType=DECIMAL},
+      </if>
+      <if test="styleid != null">
+        #{styleid,jdbcType=INTEGER},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="productmeg != null">
+        #{productmeg,jdbcType=VARCHAR},
+      </if>
+      <if test="productjmeg != null">
+        #{productjmeg,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="pdstylename != null">
+        #{pdstylename,jdbcType=VARCHAR},
+      </if>
+      <if test="listdate != null">
+        #{listdate,jdbcType=DATE},
+      </if>
+      <if test="begindate != null">
+        #{begindate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null">
+        #{enddate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qp.pojo.YjptPdSkuExample" resultType="java.lang.Long">
+    select count(*) from yjpt_pd_sku
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update yjpt_pd_sku
+    <set>
+      <if test="record.sukid != null">
+        SUKID = #{record.sukid,jdbcType=INTEGER},
+      </if>
+      <if test="record.pvids != null">
+        PVIDS = #{record.pvids,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pdid != null">
+        PDID = #{record.pdid,jdbcType=INTEGER},
+      </if>
+      <if test="record.amount != null">
+        AMOUNT = #{record.amount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.num != null">
+        NUM = #{record.num,jdbcType=INTEGER},
+      </if>
+      <if test="record.isenable != null">
+        ISENABLE = #{record.isenable,jdbcType=CHAR},
+      </if>
+      <if test="record.createtor != null">
+        CREATETOR = #{record.createtor,jdbcType=CHAR},
+      </if>
+      <if test="record.createtime != null">
+        CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifier != null">
+        MODIFIER = #{record.modifier,jdbcType=CHAR},
+      </if>
+      <if test="record.modifytime != null">
+        MODIFYTIME = #{record.modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.weight != null">
+        WEIGHT = #{record.weight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.volume != null">
+        VOLUME = #{record.volume,jdbcType=DECIMAL},
+      </if>
+      <if test="record.packvolume != null">
+        PACKVOLUME = #{record.packvolume,jdbcType=DECIMAL},
+      </if>
+      <if test="record.disamount != null">
+        DISAMOUNT = #{record.disamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.longs != null">
+        LONGS = #{record.longs,jdbcType=DECIMAL},
+      </if>
+      <if test="record.wide != null">
+        WIDE = #{record.wide,jdbcType=DECIMAL},
+      </if>
+      <if test="record.height != null">
+        HEIGHT = #{record.height,jdbcType=DECIMAL},
+      </if>
+      <if test="record.packnum != null">
+        PACKNUM = #{record.packnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.projectamout != null">
+        PROJECTAMOUT = #{record.projectamout,jdbcType=DECIMAL},
+      </if>
+      <if test="record.msamount != null">
+        MSAMOUNT = #{record.msamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.packweight != null">
+        PACKWEIGHT = #{record.packweight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.styleid != null">
+        STYLEID = #{record.styleid,jdbcType=INTEGER},
+      </if>
+      <if test="record.model != null">
+        MODEL = #{record.model,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productmeg != null">
+        PRODUCTMEG = #{record.productmeg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productjmeg != null">
+        PRODUCTJMEG = #{record.productjmeg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null">
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pdstylename != null">
+        PDSTYLENAME = #{record.pdstylename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.listdate != null">
+        LISTDATE = #{record.listdate,jdbcType=DATE},
+      </if>
+      <if test="record.begindate != null">
+        BEGINDATE = #{record.begindate,jdbcType=DATE},
+      </if>
+      <if test="record.enddate != null">
+        ENDDATE = #{record.enddate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update yjpt_pd_sku
+    set SUKID = #{record.sukid,jdbcType=INTEGER},
+      PVIDS = #{record.pvids,jdbcType=VARCHAR},
+      PDID = #{record.pdid,jdbcType=INTEGER},
+      AMOUNT = #{record.amount,jdbcType=DECIMAL},
+      NUM = #{record.num,jdbcType=INTEGER},
+      ISENABLE = #{record.isenable,jdbcType=CHAR},
+      CREATETOR = #{record.createtor,jdbcType=CHAR},
+      CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      MODIFIER = #{record.modifier,jdbcType=CHAR},
+      MODIFYTIME = #{record.modifytime,jdbcType=TIMESTAMP},
+      WEIGHT = #{record.weight,jdbcType=DECIMAL},
+      VOLUME = #{record.volume,jdbcType=DECIMAL},
+      PACKVOLUME = #{record.packvolume,jdbcType=DECIMAL},
+      DISAMOUNT = #{record.disamount,jdbcType=DECIMAL},
+      LONGS = #{record.longs,jdbcType=DECIMAL},
+      WIDE = #{record.wide,jdbcType=DECIMAL},
+      HEIGHT = #{record.height,jdbcType=DECIMAL},
+      PACKNUM = #{record.packnum,jdbcType=INTEGER},
+      PROJECTAMOUT = #{record.projectamout,jdbcType=DECIMAL},
+      MSAMOUNT = #{record.msamount,jdbcType=DECIMAL},
+      PACKWEIGHT = #{record.packweight,jdbcType=DECIMAL},
+      STYLEID = #{record.styleid,jdbcType=INTEGER},
+      MODEL = #{record.model,jdbcType=VARCHAR},
+      PRODUCTMEG = #{record.productmeg,jdbcType=VARCHAR},
+      PRODUCTJMEG = #{record.productjmeg,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      PDSTYLENAME = #{record.pdstylename,jdbcType=VARCHAR},
+      LISTDATE = #{record.listdate,jdbcType=DATE},
+      BEGINDATE = #{record.begindate,jdbcType=DATE},
+      ENDDATE = #{record.enddate,jdbcType=DATE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qp.pojo.YjptPdSku">
+    update yjpt_pd_sku
+    <set>
+      <if test="pvids != null">
+        PVIDS = #{pvids,jdbcType=VARCHAR},
+      </if>
+      <if test="pdid != null">
+        PDID = #{pdid,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        AMOUNT = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null">
+        NUM = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="isenable != null">
+        ISENABLE = #{isenable,jdbcType=CHAR},
+      </if>
+      <if test="createtor != null">
+        CREATETOR = #{createtor,jdbcType=CHAR},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null">
+        MODIFIER = #{modifier,jdbcType=CHAR},
+      </if>
+      <if test="modifytime != null">
+        MODIFYTIME = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="weight != null">
+        WEIGHT = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="volume != null">
+        VOLUME = #{volume,jdbcType=DECIMAL},
+      </if>
+      <if test="packvolume != null">
+        PACKVOLUME = #{packvolume,jdbcType=DECIMAL},
+      </if>
+      <if test="disamount != null">
+        DISAMOUNT = #{disamount,jdbcType=DECIMAL},
+      </if>
+      <if test="longs != null">
+        LONGS = #{longs,jdbcType=DECIMAL},
+      </if>
+      <if test="wide != null">
+        WIDE = #{wide,jdbcType=DECIMAL},
+      </if>
+      <if test="height != null">
+        HEIGHT = #{height,jdbcType=DECIMAL},
+      </if>
+      <if test="packnum != null">
+        PACKNUM = #{packnum,jdbcType=INTEGER},
+      </if>
+      <if test="projectamout != null">
+        PROJECTAMOUT = #{projectamout,jdbcType=DECIMAL},
+      </if>
+      <if test="msamount != null">
+        MSAMOUNT = #{msamount,jdbcType=DECIMAL},
+      </if>
+      <if test="packweight != null">
+        PACKWEIGHT = #{packweight,jdbcType=DECIMAL},
+      </if>
+      <if test="styleid != null">
+        STYLEID = #{styleid,jdbcType=INTEGER},
+      </if>
+      <if test="model != null">
+        MODEL = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="productmeg != null">
+        PRODUCTMEG = #{productmeg,jdbcType=VARCHAR},
+      </if>
+      <if test="productjmeg != null">
+        PRODUCTJMEG = #{productjmeg,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="pdstylename != null">
+        PDSTYLENAME = #{pdstylename,jdbcType=VARCHAR},
+      </if>
+      <if test="listdate != null">
+        LISTDATE = #{listdate,jdbcType=DATE},
+      </if>
+      <if test="begindate != null">
+        BEGINDATE = #{begindate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null">
+        ENDDATE = #{enddate,jdbcType=DATE},
+      </if>
+    </set>
+    where SUKID = #{sukid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qp.pojo.YjptPdSku">
+    update yjpt_pd_sku
+    set PVIDS = #{pvids,jdbcType=VARCHAR},
+      PDID = #{pdid,jdbcType=INTEGER},
+      AMOUNT = #{amount,jdbcType=DECIMAL},
+      NUM = #{num,jdbcType=INTEGER},
+      ISENABLE = #{isenable,jdbcType=CHAR},
+      CREATETOR = #{createtor,jdbcType=CHAR},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      MODIFIER = #{modifier,jdbcType=CHAR},
+      MODIFYTIME = #{modifytime,jdbcType=TIMESTAMP},
+      WEIGHT = #{weight,jdbcType=DECIMAL},
+      VOLUME = #{volume,jdbcType=DECIMAL},
+      PACKVOLUME = #{packvolume,jdbcType=DECIMAL},
+      DISAMOUNT = #{disamount,jdbcType=DECIMAL},
+      LONGS = #{longs,jdbcType=DECIMAL},
+      WIDE = #{wide,jdbcType=DECIMAL},
+      HEIGHT = #{height,jdbcType=DECIMAL},
+      PACKNUM = #{packnum,jdbcType=INTEGER},
+      PROJECTAMOUT = #{projectamout,jdbcType=DECIMAL},
+      MSAMOUNT = #{msamount,jdbcType=DECIMAL},
+      PACKWEIGHT = #{packweight,jdbcType=DECIMAL},
+      STYLEID = #{styleid,jdbcType=INTEGER},
+      MODEL = #{model,jdbcType=VARCHAR},
+      PRODUCTMEG = #{productmeg,jdbcType=VARCHAR},
+      PRODUCTJMEG = #{productjmeg,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      PDSTYLENAME = #{pdstylename,jdbcType=VARCHAR},
+      LISTDATE = #{listdate,jdbcType=DATE},
+      BEGINDATE = #{begindate,jdbcType=DATE},
+      ENDDATE = #{enddate,jdbcType=DATE}
+    where SUKID = #{sukid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qp.dao.CodetypeDao">
+  <resultMap id="BaseResultMap" type="com.qp.pojo.Codetype">
+    <id column="CODETYPEID" jdbcType="INTEGER" property="codetypeid" />
+    <result column="CODETYPENAME" jdbcType="VARCHAR" property="codetypename" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CODETYPEID, CODETYPENAME
+  </sql>
+  <select id="selectByExample" parameterType="com.qp.pojo.CodetypeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from codetype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from codetype
+    where CODETYPEID = #{codetypeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from codetype
+    where CODETYPEID = #{codetypeid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qp.pojo.CodetypeExample">
+    delete from codetype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="CODETYPEID" keyProperty="codetypeid" parameterType="com.qp.pojo.Codetype" useGeneratedKeys="true">
+    insert into codetype (CODETYPENAME)
+    values (#{codetypename,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="CODETYPEID" keyProperty="codetypeid" parameterType="com.qp.pojo.Codetype" useGeneratedKeys="true">
+    insert into codetype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="codetypename != null">
+        CODETYPENAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="codetypename != null">
+        #{codetypename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qp.pojo.CodetypeExample" resultType="java.lang.Long">
+    select count(*) from codetype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update codetype
+    <set>
+      <if test="record.codetypeid != null">
+        CODETYPEID = #{record.codetypeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.codetypename != null">
+        CODETYPENAME = #{record.codetypename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update codetype
+    set CODETYPEID = #{record.codetypeid,jdbcType=INTEGER},
+      CODETYPENAME = #{record.codetypename,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qp.pojo.Codetype">
+    update codetype
+    <set>
+      <if test="codetypename != null">
+        CODETYPENAME = #{codetypename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CODETYPEID = #{codetypeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qp.pojo.Codetype">
+    update codetype
+    set CODETYPENAME = #{codetypename,jdbcType=VARCHAR}
+    where CODETYPEID = #{codetypeid,jdbcType=INTEGER}
+  </update>
+</mapper>

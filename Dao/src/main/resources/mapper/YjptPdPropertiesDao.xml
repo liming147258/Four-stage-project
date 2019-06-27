@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qp.dao.YjptPdPropertiesDao">
+  <resultMap id="BaseResultMap" type="com.qp.pojo.YjptPdProperties">
+    <id column="PRID" jdbcType="INTEGER" property="prid" />
+    <result column="PDID" jdbcType="INTEGER" property="pdid" />
+    <result column="SKUID" jdbcType="INTEGER" property="skuid" />
+    <result column="REGIONID" jdbcType="INTEGER" property="regionid" />
+    <result column="PROPERTIESID" jdbcType="CHAR" property="propertiesid" />
+    <result column="AMOUNT" jdbcType="DECIMAL" property="amount" />
+    <result column="ISENABLE" jdbcType="CHAR" property="isenable" />
+    <result column="CREATETOR" jdbcType="CHAR" property="createtor" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="MODIFIER" jdbcType="CHAR" property="modifier" />
+    <result column="MODIFYTIME" jdbcType="TIMESTAMP" property="modifytime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    PRID, PDID, SKUID, REGIONID, PROPERTIESID, AMOUNT, ISENABLE, CREATETOR, CREATETIME, 
+    MODIFIER, MODIFYTIME
+  </sql>
+  <select id="selectByExample" parameterType="com.qp.pojo.YjptPdPropertiesExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from yjpt_pd_properties
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yjpt_pd_properties
+    where PRID = #{prid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yjpt_pd_properties
+    where PRID = #{prid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qp.pojo.YjptPdPropertiesExample">
+    delete from yjpt_pd_properties
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="PRID" keyProperty="prid" parameterType="com.qp.pojo.YjptPdProperties" useGeneratedKeys="true">
+    insert into yjpt_pd_properties (PDID, SKUID, REGIONID, 
+      PROPERTIESID, AMOUNT, ISENABLE, 
+      CREATETOR, CREATETIME, MODIFIER, 
+      MODIFYTIME)
+    values (#{pdid,jdbcType=INTEGER}, #{skuid,jdbcType=INTEGER}, #{regionid,jdbcType=INTEGER}, 
+      #{propertiesid,jdbcType=CHAR}, #{amount,jdbcType=DECIMAL}, #{isenable,jdbcType=CHAR}, 
+      #{createtor,jdbcType=CHAR}, #{createtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=CHAR}, 
+      #{modifytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="PRID" keyProperty="prid" parameterType="com.qp.pojo.YjptPdProperties" useGeneratedKeys="true">
+    insert into yjpt_pd_properties
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pdid != null">
+        PDID,
+      </if>
+      <if test="skuid != null">
+        SKUID,
+      </if>
+      <if test="regionid != null">
+        REGIONID,
+      </if>
+      <if test="propertiesid != null">
+        PROPERTIESID,
+      </if>
+      <if test="amount != null">
+        AMOUNT,
+      </if>
+      <if test="isenable != null">
+        ISENABLE,
+      </if>
+      <if test="createtor != null">
+        CREATETOR,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="modifier != null">
+        MODIFIER,
+      </if>
+      <if test="modifytime != null">
+        MODIFYTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pdid != null">
+        #{pdid,jdbcType=INTEGER},
+      </if>
+      <if test="skuid != null">
+        #{skuid,jdbcType=INTEGER},
+      </if>
+      <if test="regionid != null">
+        #{regionid,jdbcType=INTEGER},
+      </if>
+      <if test="propertiesid != null">
+        #{propertiesid,jdbcType=CHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="isenable != null">
+        #{isenable,jdbcType=CHAR},
+      </if>
+      <if test="createtor != null">
+        #{createtor,jdbcType=CHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=CHAR},
+      </if>
+      <if test="modifytime != null">
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qp.pojo.YjptPdPropertiesExample" resultType="java.lang.Long">
+    select count(*) from yjpt_pd_properties
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update yjpt_pd_properties
+    <set>
+      <if test="record.prid != null">
+        PRID = #{record.prid,jdbcType=INTEGER},
+      </if>
+      <if test="record.pdid != null">
+        PDID = #{record.pdid,jdbcType=INTEGER},
+      </if>
+      <if test="record.skuid != null">
+        SKUID = #{record.skuid,jdbcType=INTEGER},
+      </if>
+      <if test="record.regionid != null">
+        REGIONID = #{record.regionid,jdbcType=INTEGER},
+      </if>
+      <if test="record.propertiesid != null">
+        PROPERTIESID = #{record.propertiesid,jdbcType=CHAR},
+      </if>
+      <if test="record.amount != null">
+        AMOUNT = #{record.amount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isenable != null">
+        ISENABLE = #{record.isenable,jdbcType=CHAR},
+      </if>
+      <if test="record.createtor != null">
+        CREATETOR = #{record.createtor,jdbcType=CHAR},
+      </if>
+      <if test="record.createtime != null">
+        CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifier != null">
+        MODIFIER = #{record.modifier,jdbcType=CHAR},
+      </if>
+      <if test="record.modifytime != null">
+        MODIFYTIME = #{record.modifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update yjpt_pd_properties
+    set PRID = #{record.prid,jdbcType=INTEGER},
+      PDID = #{record.pdid,jdbcType=INTEGER},
+      SKUID = #{record.skuid,jdbcType=INTEGER},
+      REGIONID = #{record.regionid,jdbcType=INTEGER},
+      PROPERTIESID = #{record.propertiesid,jdbcType=CHAR},
+      AMOUNT = #{record.amount,jdbcType=DECIMAL},
+      ISENABLE = #{record.isenable,jdbcType=CHAR},
+      CREATETOR = #{record.createtor,jdbcType=CHAR},
+      CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      MODIFIER = #{record.modifier,jdbcType=CHAR},
+      MODIFYTIME = #{record.modifytime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qp.pojo.YjptPdProperties">
+    update yjpt_pd_properties
+    <set>
+      <if test="pdid != null">
+        PDID = #{pdid,jdbcType=INTEGER},
+      </if>
+      <if test="skuid != null">
+        SKUID = #{skuid,jdbcType=INTEGER},
+      </if>
+      <if test="regionid != null">
+        REGIONID = #{regionid,jdbcType=INTEGER},
+      </if>
+      <if test="propertiesid != null">
+        PROPERTIESID = #{propertiesid,jdbcType=CHAR},
+      </if>
+      <if test="amount != null">
+        AMOUNT = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="isenable != null">
+        ISENABLE = #{isenable,jdbcType=CHAR},
+      </if>
+      <if test="createtor != null">
+        CREATETOR = #{createtor,jdbcType=CHAR},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null">
+        MODIFIER = #{modifier,jdbcType=CHAR},
+      </if>
+      <if test="modifytime != null">
+        MODIFYTIME = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where PRID = #{prid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qp.pojo.YjptPdProperties">
+    update yjpt_pd_properties
+    set PDID = #{pdid,jdbcType=INTEGER},
+      SKUID = #{skuid,jdbcType=INTEGER},
+      REGIONID = #{regionid,jdbcType=INTEGER},
+      PROPERTIESID = #{propertiesid,jdbcType=CHAR},
+      AMOUNT = #{amount,jdbcType=DECIMAL},
+      ISENABLE = #{isenable,jdbcType=CHAR},
+      CREATETOR = #{createtor,jdbcType=CHAR},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      MODIFIER = #{modifier,jdbcType=CHAR},
+      MODIFYTIME = #{modifytime,jdbcType=TIMESTAMP}
+    where PRID = #{prid,jdbcType=INTEGER}
+  </update>
+</mapper>
