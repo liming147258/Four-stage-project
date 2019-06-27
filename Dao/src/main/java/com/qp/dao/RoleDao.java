@@ -1,7 +1,5 @@
 package com.qp.dao;
 
-import com.qp.pojo.Role;
-import com.qp.pojo.RoleExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

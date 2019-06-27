@@ -1,7 +1,5 @@
 package com.qp.dao;
 
-import com.qp.pojo.YjptPsBuilding;
-import com.qp.pojo.YjptPsBuildingExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

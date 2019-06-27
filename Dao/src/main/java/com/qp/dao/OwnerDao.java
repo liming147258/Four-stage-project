@@ -1,7 +1,5 @@
 package com.qp.dao;
 
-import com.qp.pojo.Owner;
-import com.qp.pojo.OwnerExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

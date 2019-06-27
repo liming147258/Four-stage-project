@@ -3,7 +3,6 @@ package com.qp.serviceimpl;
 
 import com.qp.service.TextServcie;
 import com.qp.dao.TextDao;
-import com.qp.pojo.TextPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

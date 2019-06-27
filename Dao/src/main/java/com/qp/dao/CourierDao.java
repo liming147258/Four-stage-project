@@ -1,7 +1,5 @@
 package com.qp.dao;
 
-import com.qp.pojo.Courier;
-import com.qp.pojo.CourierExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

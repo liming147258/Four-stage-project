@@ -1,7 +1,5 @@
 package com.qp.dao;
 
-import com.qp.pojo.YjptPsSalesorder;
-import com.qp.pojo.YjptPsSalesorderExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

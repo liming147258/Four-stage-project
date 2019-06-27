@@ -1,7 +1,5 @@
 package com.qp.dao;
 
-import com.qp.pojo.YjptPdTexture;
-import com.qp.pojo.YjptPdTextureExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

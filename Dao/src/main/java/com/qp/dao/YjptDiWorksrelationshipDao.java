@@ -1,7 +1,5 @@
 package com.qp.dao;
 
-import com.qp.pojo.YjptDiWorksrelationship;
-import com.qp.pojo.YjptDiWorksrelationshipExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

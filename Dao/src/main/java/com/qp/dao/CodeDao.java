@@ -1,7 +1,5 @@
 package com.qp.dao;
 
-import com.qp.pojo.Code;
-import com.qp.pojo.CodeExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

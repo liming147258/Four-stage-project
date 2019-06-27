@@ -1,7 +1,5 @@
 package com.qp.dao;
 
-import com.qp.pojo.YjptPdLogisticsmatching;
-import com.qp.pojo.YjptPdLogisticsmatchingExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
