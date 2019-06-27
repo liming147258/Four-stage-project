@@ -2,8 +2,10 @@ package com.qp.dao;
 
 import com.qp.pojo.YjptPdProtype;
 import com.qp.pojo.YjptPdProtypeExample;
-import java.util.List;
+import com.qp.pojo.com.qp.pojo.supe.YjptPdProtypeWithChild;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface YjptPdProtypeDao {
     long countByExample(YjptPdProtypeExample example);
@@ -27,4 +29,6 @@ public interface YjptPdProtypeDao {
     int updateByPrimaryKeySelective(YjptPdProtype record);
 
     int updateByPrimaryKey(YjptPdProtype record);
+
+    List<YjptPdProtypeWithChild> selectAllOneClass();
 }

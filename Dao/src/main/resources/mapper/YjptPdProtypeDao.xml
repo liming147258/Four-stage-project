@@ -272,4 +272,9 @@
       MODIFYTIME = #{modifytime,jdbcType=TIMESTAMP}
     where TID = #{tid,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAllOneClass" resultType="com.qp.pojo.com.qp.pojo.supe.YjptPdProtypeWithChild">
+
+  </select>
+
 </mapper>
