@@ -10,6 +10,12 @@ import java.util.List;
  */
 @Data
 public class TableData<T> {
+    /**
+     * 总行数
+     */
     private Integer total;
+    /**
+     * 数据
+     */
     private List<T> rows;
 }
