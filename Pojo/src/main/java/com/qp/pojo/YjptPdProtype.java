@@ -21,7 +21,7 @@ public class YjptPdProtype implements Serializable {
     /**
      * 上级目录
      */
-    private String pid;
+    private Integer pid;
 
     /**
      * 菜单级数
@@ -71,11 +71,11 @@ public class YjptPdProtype implements Serializable {
         this.typename = typename;
     }
 
-    public String getPid() {
+    public Integer getPid() {
         return pid;
     }
 
-    public void setPid(String pid) {
+    public void setPid(Integer pid) {
         this.pid = pid;
     }
 
