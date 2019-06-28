@@ -8,6 +8,6 @@ import lombok.Data;
  * 携带子类型的类型
  */
 @Data
-public class YjptPdProtypeWithChild extends YjptPdProtype {
+public class ProtypeWithChild extends YjptPdProtype {
     private YjptPdProtype child;
 }
