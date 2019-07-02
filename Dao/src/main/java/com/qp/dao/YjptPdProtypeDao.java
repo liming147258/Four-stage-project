@@ -30,5 +30,9 @@ public interface YjptPdProtypeDao {
 
     int updateByPrimaryKey(YjptPdProtype record);
 
+    /**
+     * 返回三级目录结构
+     * @return
+     */
     List<ProtypeWithChild> selectAll();
 }
