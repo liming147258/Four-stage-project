@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>楼座信息管理</title>
+		<link rel="stylesheet" type="text/css" href="easyui\themes\default\easyui.css" />
+		<link rel="stylesheet" type="text/css" href="easyui\themes\icon.css" />
+		<script type="text/javascript" src="easyui\jquery.min.js"></script>
+		<script type="text/javascript" src="easyui\jquery.easyui.min.js"></script>
+	</head>
+
+	<body>
+
+		<script type="text/javascript">
+			function newDong() {
+				$('#dlg2').dialog('open').dialog('setTitle', '新建楼栋');
+				$('#fm').form('clear');
+				url = 'save_user.php';
+			}
+
+			function saveDong() {
+				$('#fm').form('submit', {
+					url: url,
+					onSubmit: function() {
+						return $(this).form('validate');
+					},
+					success: function(result) {
+						var result = eval('(' + result + ')');
+						if(result.errorMsg) {
+							$.messager.show({
+								title: 'Error',
+								msg: result.errorMsg
+							});
+						} else {
+							$('#dlg2').dialog('close'); // close the dialog
+							$('#dg').datagrid('reload'); // reload the user data
+						}
+					}
+				});
+			}
+
+			function editDong() {
+				var row = $('#dg').datagrid('getSelected');
+				if(row) {
+					$('#dlg2').dialog('open').dialog('setTitle', '修改楼座');
+					$('#fm').form('load', row);
+					url = 'books?action=updateBooks&id=' + row.id;
+				} else {
+					alert("选中要修改一行数据");
+				}
+			}
+
+			function destroyDong() {
+				var row = $('#dg').datagrid('getSelected');
+				if(row) {
+					$.messager.confirm('Confirm', '你确定要删除此条楼座信息吗?', function(r) {
+						if(r) {
+							$.post('destroy_user.php', {
+								id: row.id
+							}, function(result) {
+								if(result.success) {
+									$('#dg').datagrid('reload'); // reload the user data
+								} else {
+									$.messager.show({ // show error message
+										title: 'Error',
+										msg: result.errorMsg
+									});
+								}
+							}, 'json');
+						}
+					});
+				}
+			}
+
+
+			function doSearchDong() {
+				$('#dg').datagrid('load', {
+					name: $('#nameid').val(),
+					telname: $('#telnameid').val()
+				});
+			}
+		</script>
+
+		<div style="margin:20px 0;"></div>
+		<div>
+			楼座名称：<input id="nameid" class="easyui-textbox" data-options="iconCls:'icon-search'" style="width: 300px" />
+			楼盘名称：<input id="telnameid" class="easyui-textbox" data-options="iconCls:'icon-search'" style="width: 300px" />
+			<a href="#" class="easyui-linkbutton" plain="true" onclick="doSearchDong()">查询</a>
+		</div>
+		<div id="toolbar2">
+			<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newDong()">新增</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editDong()">修改</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyDong()">删除</a>
+		</div>
+		<table class="easyui-datagrid" title="楼座信息" style="width:1200px;height:250px" data-options="singleSelect:true,collapsible:true,url:'/building/select',method:'get',pagination:true,pageList:[1,2,3,4,5,6,7],pageSize:1,toolbar:'#toolbar2'">
+			<thead>
+				<tr>
+					<th data-options="field:'buildingname',width:100,align:'center'">栋名</th>
+					<th data-options="field:'propertiesname',width:100,align:'center'">所属楼盘名称</th>
+					<th data-options="field:'design',width:100,align:'center'">已有户型</th>
+					<th data-options="field:'level',width:100,align:'center'">层数</th>
+
+				</tr>
+			</thead>
+		</table>
+
+		<div id="dlg2" class="easyui-dialog" style="width:400px;height:400px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
+			<div class="ftitle">楼座信息</div>
+			<form id="fm" method="post">
+				<div class="fitem">
+					<label>楼座:</label>
+					<input name="firstname" class="easyui-validatebox" style="width:80%;height:32px" required="true">
+				</div>
+				<div class="fitem">
+					<label>楼盘:</label>
+					<input name="firstname " class="easyui-validatebox " style="width:80%;height:32px " required="true ">
+				</div>
+				<div class="fitem ">
+					<label>户型:</label>
+					<input name="firstname" class="easyui-validatebox" style="width:80%;height:32px" required="true">
+				</div>
+				<div class="fitem">
+					<label>层数:</label>
+					<input name="firstname" class="easyui-validatebox" style="width:80%;height:32px" required="true">
+				</div>
+
+			</form>
+		</div>
+		<div id="dlg-buttons">
+			<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveDong()">保存</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">取消</a>
+		</div>
+	</body>
+
+</html>
