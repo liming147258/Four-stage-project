@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qp.dao.StyleDao">
+  <resultMap id="BaseResultMap" type="com.qp.pojo.Style">
+    <id column="STYLEID" jdbcType="INTEGER" property="styleid" />
+    <result column="STYLENAME" jdbcType="VARCHAR" property="stylename" />
+    <result column="STYLETYPE" jdbcType="VARCHAR" property="styletype" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    STYLEID, STYLENAME, STYLETYPE, `STATE`
+  </sql>
+  <select id="selectByExample" parameterType="com.qp.pojo.StyleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from style
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from style
+    where STYLEID = #{styleid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from style
+    where STYLEID = #{styleid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qp.pojo.StyleExample">
+    delete from style
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="STYLEID" keyProperty="styleid" parameterType="com.qp.pojo.Style" useGeneratedKeys="true">
+    insert into style (STYLENAME, STYLETYPE, `STATE`
+      )
+    values (#{stylename,jdbcType=VARCHAR}, #{styletype,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="STYLEID" keyProperty="styleid" parameterType="com.qp.pojo.Style" useGeneratedKeys="true">
+    insert into style
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stylename != null">
+        STYLENAME,
+      </if>
+      <if test="styletype != null">
+        STYLETYPE,
+      </if>
+      <if test="state != null">
+        `STATE`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stylename != null">
+        #{stylename,jdbcType=VARCHAR},
+      </if>
+      <if test="styletype != null">
+        #{styletype,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qp.pojo.StyleExample" resultType="java.lang.Long">
+    select count(*) from style
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update style
+    <set>
+      <if test="record.styleid != null">
+        STYLEID = #{record.styleid,jdbcType=INTEGER},
+      </if>
+      <if test="record.stylename != null">
+        STYLENAME = #{record.stylename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.styletype != null">
+        STYLETYPE = #{record.styletype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null">
+        `STATE` = #{record.state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update style
+    set STYLEID = #{record.styleid,jdbcType=INTEGER},
+      STYLENAME = #{record.stylename,jdbcType=VARCHAR},
+      STYLETYPE = #{record.styletype,jdbcType=VARCHAR},
+      `STATE` = #{record.state,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qp.pojo.Style">
+    update style
+    <set>
+      <if test="stylename != null">
+        STYLENAME = #{stylename,jdbcType=VARCHAR},
+      </if>
+      <if test="styletype != null">
+        STYLETYPE = #{styletype,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        `STATE` = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where STYLEID = #{styleid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qp.pojo.Style">
+    update style
+    set STYLENAME = #{stylename,jdbcType=VARCHAR},
+      STYLETYPE = #{styletype,jdbcType=VARCHAR},
+      `STATE` = #{state,jdbcType=VARCHAR}
+    where STYLEID = #{styleid,jdbcType=INTEGER}
+  </update>
+</mapper>

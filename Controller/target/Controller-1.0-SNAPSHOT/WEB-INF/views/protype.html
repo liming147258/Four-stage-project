@@ -1,0 +1,42 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>产品类型编辑</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/easyui/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="/static/easyui/themes/icon.css" />
+    <script type="text/javascript" src="/static/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/easyui/jquery.easyui.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/easyui/themes/icon-dortmund.css" />
+    <script type="text/javascript" src="/static/easyui/jquery-easyui-datagridview/datagrid-detailview.js"></script>
+    <script type="text/javascript">
+        $(function() {
+
+            $('#mainnav').tree({
+                url: '/Protype'
+            });
+
+            $("#mainnav").tree({
+                onClick: function(node) { //onClick	node	当用户点击一个节点时触发。
+                    var t = $('#tt').tabs('getTab', node.text);
+                    if(t) {
+                        $('#tt').tabs('select', node.text);
+                    } else {
+                        $('#tt').tabs('add', {
+                            title: node.text,
+                            closable: true,
+                            href: node.attributes.url
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+
+<body class="easyui-layout">
+    <ul id="mainnav"></ul>
+</body>
+</html>

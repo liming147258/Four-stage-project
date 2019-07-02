@@ -50,4 +50,6 @@ public class ProtypeServiceImpl implements ProtypeService {
         }
         return nodeList;
     }
+        return null;
+    }
 }

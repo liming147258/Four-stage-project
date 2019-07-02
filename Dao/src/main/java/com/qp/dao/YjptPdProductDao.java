@@ -2,8 +2,11 @@ package com.qp.dao;
 
 import com.qp.pojo.YjptPdProduct;
 import com.qp.pojo.YjptPdProductExample;
-import java.util.List;
+import com.qp.pojo.yangchun.ProductStatus;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Map;
 
 public interface YjptPdProductDao {
     long countByExample(YjptPdProductExample example);
@@ -27,4 +30,12 @@ public interface YjptPdProductDao {
     int updateByPrimaryKeySelective(YjptPdProduct record);
 
     int updateByPrimaryKey(YjptPdProduct record);
+    //查询所有未审核状态产品 create ben
+    List<ProductStatus> selectNotStatus(Map<String,Object> map);
+    //测试
+    List<YjptPdProduct> selectAll();
+    //查询行数
+    int  count();
+    //修改
+    int updateStatus(YjptPdProduct product);
 }

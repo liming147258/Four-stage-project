@@ -35,4 +35,5 @@ public interface YjptPdProtypeDao {
      * @return
      */
     List<ProtypeWithChild> selectAll();
+
 }
