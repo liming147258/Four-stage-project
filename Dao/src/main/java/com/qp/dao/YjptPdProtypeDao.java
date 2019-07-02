@@ -30,5 +30,5 @@ public interface YjptPdProtypeDao {
 
     int updateByPrimaryKey(YjptPdProtype record);
 
-    List<ProtypeWithChild> selectAll();
+   // List<ProtypeWithChild> selectAll();
 }

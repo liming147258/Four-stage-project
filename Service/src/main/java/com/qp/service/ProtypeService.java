@@ -8,5 +8,5 @@ import java.util.List;
  * @author liyan
  */
 public interface ProtypeService {
-    List<TreeNode> getAllProtype();
+   // List<TreeNode> getAllProtype();
 }

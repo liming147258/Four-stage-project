@@ -273,12 +273,6 @@
     where TID = #{tid,jdbcType=INTEGER}
   </update>
 
-  <resultMap id="" type="">
 
-  </resultMap>
-
-  <select id="selectAll" resultType="com.qp.pojo.com.qp.pojo.supe.ProtypeWithChild">
-
-  </select>
 
 </mapper>

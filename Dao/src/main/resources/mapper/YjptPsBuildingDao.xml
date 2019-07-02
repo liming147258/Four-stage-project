@@ -1,119 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qp.dao.YjptPsBuildingDao">
-  <resultMap id="BaseResultMap" type="com.qp.pojo.YjptPsBuilding">
-    <id column="BUILDINGID" jdbcType="INTEGER" property="buildingid" />
-    <result column="BUILDINGNAME" jdbcType="VARCHAR" property="buildingname" />
-    <result column="PROPERTIESID" jdbcType="INTEGER" property="propertiesid" />
-    <result column="HOUSINGID" jdbcType="INTEGER" property="housingid" />
-    <result column="LEVEL" jdbcType="INTEGER" property="level" />
-    <result column="ISENABLE" jdbcType="CHAR" property="isenable" />
-    <result column="CREATETOR" jdbcType="CHAR" property="createtor" />
-    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="MODIFIER" jdbcType="CHAR" property="modifier" />
-    <result column="MODIFYTIME" jdbcType="TIMESTAMP" property="modifytime" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.qp.pojo.YjptPsBuilding">
+        <id column="BUILDINGID" jdbcType="INTEGER" property="buildingid"/>
+        <result column="BUILDINGNAME" jdbcType="VARCHAR" property="buildingname"/>
+        <result column="PROPERTIESID" jdbcType="INTEGER" property="propertiesid"/>
+        <result column="HOUSINGID" jdbcType="INTEGER" property="housingid"/>
+        <result column="LEVEL" jdbcType="INTEGER" property="level"/>
+        <result column="ISENABLE" jdbcType="CHAR" property="isenable"/>
+        <result column="CREATETOR" jdbcType="CHAR" property="createtor"/>
+        <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime"/>
+        <result column="MODIFIER" jdbcType="CHAR" property="modifier"/>
+        <result column="MODIFYTIME" jdbcType="TIMESTAMP" property="modifytime"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
     BUILDINGID, BUILDINGNAME, PROPERTIESID, HOUSINGID, `LEVEL`, ISENABLE, CREATETOR, 
     CREATETIME, MODIFIER, MODIFYTIME
   </sql>
-  <select id="selectByExample" parameterType="com.qp.pojo.YjptPsBuildingExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from yjpt_ps_building
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-    <if test="limit != null">
-      <if test="offset != null">
-        limit ${offset}, ${limit}
-      </if>
-      <if test="offset == null">
-        limit ${limit}
-      </if>
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from yjpt_ps_building
-    where BUILDINGID = #{buildingid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByExample" parameterType="com.qp.pojo.YjptPsBuildingExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from yjpt_ps_building
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+        <if test="limit != null">
+            <if test="offset != null">
+                limit ${offset}, ${limit}
+            </if>
+            <if test="offset == null">
+                limit ${limit}
+            </if>
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from yjpt_ps_building
+        where BUILDINGID = #{buildingid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from yjpt_ps_building
     where BUILDINGID = #{buildingid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.qp.pojo.YjptPsBuildingExample">
-    delete from yjpt_ps_building
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" keyColumn="BUILDINGID" keyProperty="buildingid" parameterType="com.qp.pojo.YjptPsBuilding" useGeneratedKeys="true">
+    <delete id="deleteByExample" parameterType="com.qp.pojo.YjptPsBuildingExample">
+        delete from yjpt_ps_building
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" keyColumn="BUILDINGID" keyProperty="buildingid" parameterType="com.qp.pojo.YjptPsBuilding"
+            useGeneratedKeys="true">
     insert into yjpt_ps_building (BUILDINGNAME, PROPERTIESID, HOUSINGID, 
       `LEVEL`, ISENABLE, CREATETOR, 
       CREATETIME, MODIFIER, MODIFYTIME
@@ -123,161 +126,162 @@
       #{createtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=CHAR}, #{modifytime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" keyColumn="BUILDINGID" keyProperty="buildingid" parameterType="com.qp.pojo.YjptPsBuilding" useGeneratedKeys="true">
-    insert into yjpt_ps_building
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="buildingname != null">
-        BUILDINGNAME,
-      </if>
-      <if test="propertiesid != null">
-        PROPERTIESID,
-      </if>
-      <if test="housingid != null">
-        HOUSINGID,
-      </if>
-      <if test="level != null">
-        `LEVEL`,
-      </if>
-      <if test="isenable != null">
-        ISENABLE,
-      </if>
-      <if test="createtor != null">
-        CREATETOR,
-      </if>
-      <if test="createtime != null">
-        CREATETIME,
-      </if>
-      <if test="modifier != null">
-        MODIFIER,
-      </if>
-      <if test="modifytime != null">
-        MODIFYTIME,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="buildingname != null">
-        #{buildingname,jdbcType=VARCHAR},
-      </if>
-      <if test="propertiesid != null">
-        #{propertiesid,jdbcType=INTEGER},
-      </if>
-      <if test="housingid != null">
-        #{housingid,jdbcType=INTEGER},
-      </if>
-      <if test="level != null">
-        #{level,jdbcType=INTEGER},
-      </if>
-      <if test="isenable != null">
-        #{isenable,jdbcType=CHAR},
-      </if>
-      <if test="createtor != null">
-        #{createtor,jdbcType=CHAR},
-      </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifier != null">
-        #{modifier,jdbcType=CHAR},
-      </if>
-      <if test="modifytime != null">
-        #{modifytime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.qp.pojo.YjptPsBuildingExample" resultType="java.lang.Long">
-    select count(*) from yjpt_ps_building
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update yjpt_ps_building
-    <set>
-      <if test="record.buildingid != null">
-        BUILDINGID = #{record.buildingid,jdbcType=INTEGER},
-      </if>
-      <if test="record.buildingname != null">
+    <insert id="insertSelective" keyColumn="BUILDINGID" keyProperty="buildingid"
+            parameterType="com.qp.pojo.YjptPsBuilding" useGeneratedKeys="true">
+        insert into yjpt_ps_building
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="buildingname != null">
+                BUILDINGNAME,
+            </if>
+            <if test="propertiesid != null">
+                PROPERTIESID,
+            </if>
+            <if test="housingid != null">
+                HOUSINGID,
+            </if>
+            <if test="level != null">
+                `LEVEL`,
+            </if>
+            <if test="isenable != null">
+                ISENABLE,
+            </if>
+            <if test="createtor != null">
+                CREATETOR,
+            </if>
+            <if test="createtime != null">
+                CREATETIME,
+            </if>
+            <if test="modifier != null">
+                MODIFIER,
+            </if>
+            <if test="modifytime != null">
+                MODIFYTIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="buildingname != null">
+                #{buildingname,jdbcType=VARCHAR},
+            </if>
+            <if test="propertiesid != null">
+                #{propertiesid,jdbcType=INTEGER},
+            </if>
+            <if test="housingid != null">
+                #{housingid,jdbcType=INTEGER},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=INTEGER},
+            </if>
+            <if test="isenable != null">
+                #{isenable,jdbcType=CHAR},
+            </if>
+            <if test="createtor != null">
+                #{createtor,jdbcType=CHAR},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=CHAR},
+            </if>
+            <if test="modifytime != null">
+                #{modifytime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.qp.pojo.YjptPsBuildingExample" resultType="java.lang.Long">
+        select count(*) from yjpt_ps_building
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update yjpt_ps_building
+        <set>
+            <if test="record.buildingid != null">
+                BUILDINGID = #{record.buildingid,jdbcType=INTEGER},
+            </if>
+            <if test="record.buildingname != null">
+                BUILDINGNAME = #{record.buildingname,jdbcType=VARCHAR},
+            </if>
+            <if test="record.propertiesid != null">
+                PROPERTIESID = #{record.propertiesid,jdbcType=INTEGER},
+            </if>
+            <if test="record.housingid != null">
+                HOUSINGID = #{record.housingid,jdbcType=INTEGER},
+            </if>
+            <if test="record.level != null">
+                `LEVEL` = #{record.level,jdbcType=INTEGER},
+            </if>
+            <if test="record.isenable != null">
+                ISENABLE = #{record.isenable,jdbcType=CHAR},
+            </if>
+            <if test="record.createtor != null">
+                CREATETOR = #{record.createtor,jdbcType=CHAR},
+            </if>
+            <if test="record.createtime != null">
+                CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.modifier != null">
+                MODIFIER = #{record.modifier,jdbcType=CHAR},
+            </if>
+            <if test="record.modifytime != null">
+                MODIFYTIME = #{record.modifytime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update yjpt_ps_building
+        set BUILDINGID = #{record.buildingid,jdbcType=INTEGER},
         BUILDINGNAME = #{record.buildingname,jdbcType=VARCHAR},
-      </if>
-      <if test="record.propertiesid != null">
         PROPERTIESID = #{record.propertiesid,jdbcType=INTEGER},
-      </if>
-      <if test="record.housingid != null">
         HOUSINGID = #{record.housingid,jdbcType=INTEGER},
-      </if>
-      <if test="record.level != null">
         `LEVEL` = #{record.level,jdbcType=INTEGER},
-      </if>
-      <if test="record.isenable != null">
         ISENABLE = #{record.isenable,jdbcType=CHAR},
-      </if>
-      <if test="record.createtor != null">
         CREATETOR = #{record.createtor,jdbcType=CHAR},
-      </if>
-      <if test="record.createtime != null">
         CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.modifier != null">
         MODIFIER = #{record.modifier,jdbcType=CHAR},
-      </if>
-      <if test="record.modifytime != null">
-        MODIFYTIME = #{record.modifytime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update yjpt_ps_building
-    set BUILDINGID = #{record.buildingid,jdbcType=INTEGER},
-      BUILDINGNAME = #{record.buildingname,jdbcType=VARCHAR},
-      PROPERTIESID = #{record.propertiesid,jdbcType=INTEGER},
-      HOUSINGID = #{record.housingid,jdbcType=INTEGER},
-      `LEVEL` = #{record.level,jdbcType=INTEGER},
-      ISENABLE = #{record.isenable,jdbcType=CHAR},
-      CREATETOR = #{record.createtor,jdbcType=CHAR},
-      CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
-      MODIFIER = #{record.modifier,jdbcType=CHAR},
-      MODIFYTIME = #{record.modifytime,jdbcType=TIMESTAMP}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qp.pojo.YjptPsBuilding">
-    update yjpt_ps_building
-    <set>
-      <if test="buildingname != null">
-        BUILDINGNAME = #{buildingname,jdbcType=VARCHAR},
-      </if>
-      <if test="propertiesid != null">
-        PROPERTIESID = #{propertiesid,jdbcType=INTEGER},
-      </if>
-      <if test="housingid != null">
-        HOUSINGID = #{housingid,jdbcType=INTEGER},
-      </if>
-      <if test="level != null">
-        `LEVEL` = #{level,jdbcType=INTEGER},
-      </if>
-      <if test="isenable != null">
-        ISENABLE = #{isenable,jdbcType=CHAR},
-      </if>
-      <if test="createtor != null">
-        CREATETOR = #{createtor,jdbcType=CHAR},
-      </if>
-      <if test="createtime != null">
-        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifier != null">
-        MODIFIER = #{modifier,jdbcType=CHAR},
-      </if>
-      <if test="modifytime != null">
-        MODIFYTIME = #{modifytime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where BUILDINGID = #{buildingid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.qp.pojo.YjptPsBuilding">
+        MODIFYTIME = #{record.modifytime,jdbcType=TIMESTAMP}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.qp.pojo.YjptPsBuilding">
+        update yjpt_ps_building
+        <set>
+            <if test="buildingname != null">
+                BUILDINGNAME = #{buildingname,jdbcType=VARCHAR},
+            </if>
+            <if test="propertiesid != null">
+                PROPERTIESID = #{propertiesid,jdbcType=INTEGER},
+            </if>
+            <if test="housingid != null">
+                HOUSINGID = #{housingid,jdbcType=INTEGER},
+            </if>
+            <if test="level != null">
+                `LEVEL` = #{level,jdbcType=INTEGER},
+            </if>
+            <if test="isenable != null">
+                ISENABLE = #{isenable,jdbcType=CHAR},
+            </if>
+            <if test="createtor != null">
+                CREATETOR = #{createtor,jdbcType=CHAR},
+            </if>
+            <if test="createtime != null">
+                CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null">
+                MODIFIER = #{modifier,jdbcType=CHAR},
+            </if>
+            <if test="modifytime != null">
+            MODIFYTIME = #{modifytime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where BUILDINGID = #{buildingid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.qp.pojo.YjptPsBuilding">
     update yjpt_ps_building
     set BUILDINGNAME = #{buildingname,jdbcType=VARCHAR},
       PROPERTIESID = #{propertiesid,jdbcType=INTEGER},
@@ -290,4 +294,32 @@
       MODIFYTIME = #{modifytime,jdbcType=TIMESTAMP}
     where BUILDINGID = #{buildingid,jdbcType=INTEGER}
   </update>
+    <!--ben-->
+    <select id="selectAll" parameterType="map" resultMap="buildingMap">
+      SELECT
+        pb.BUILDINGID,
+        pb.BUILDINGNAME,
+        pb.`LEVEL`,
+        ps.PROPERTIESID,
+        ps.PROPERTIESNAME,
+        ps.DESIGN
+    FROM
+        yjpt_ps_building pb,
+        yjpt_ps_properties_sale ps
+    WHERE
+        pb.PROPERTIESID = ps.PROPERTIESID
+  </select>
+
+    <select id="count" resultType="integer">
+    SELECT COUNT(*) FROM yjpt_ps_building
+  </select>
+
+    <resultMap id="buildingMap" type="com.qp.pojo.yangchun.BuildingDong">
+        <id column="BUILDINGID" property="buildingid"></id>
+        <result column="BUILDINGNAME" property="buildingname"></result>
+        <result column="LEVEL" property="level"></result>
+        <result column="PROPERTIESID" property="propertiesid"></result>
+        <result column="PROPERTIESNAME"  property="propertiesname"></result>
+        <result column="DESIGN" property="design"></result>
+    </resultMap>
 </mapper>

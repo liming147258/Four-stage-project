@@ -15,8 +15,8 @@ public class ProtypeServiceImpl implements ProtypeService {
     @Autowired
     private YjptPdProtypeDao protypeDao;
 
-    @Override
+   /* @Override
     public List<TreeNode> getAllProtype() {
         return null;
-    }
+    }*/
 }
